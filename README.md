@@ -33,8 +33,7 @@ Sebuah aplikasi real-time yang memungkinkan pengguna untuk menggambar di layar h
 * Clone repositori ini ke komputer Anda:
 
 ```bash
-git clone https://github.com/NAMA_USER_ANDA/NAMA_REPOSITORI_ANDA.git
-cd NAMA_REPOSITORI_ANDA
+git clone https://github.com/ahnafyura/AirDrawing.git
 ```
 
 ### 2. Buat Virtual Environment
