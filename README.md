@@ -1,89 +1,131 @@
-# Virtual Painter dengan Gestur Tangan
+# 🚀 Virtual Gesture Studio (Advanced Air Painter)
 
-Sebuah aplikasi real-time yang memungkinkan pengguna untuk menggambar di layar hanya dengan menggunakan gerakan tangan di depan webcam. Proyek ini memanfaatkan **OpenCV** untuk pemrosesan gambar dan **MediaPipe** dari Google untuk deteksi landmark tangan yang akurat.
+Welcome to **Virtual Gesture Studio**! This is an advanced computer vision application that transforms your webcam into an interactive digital canvas. Forget your mouse and keyboard — draw, design, and manage your artwork using only hand gestures.
 
----
+This project leverages **OpenCV** for real-time image processing and **Google MediaPipe** for precise 21-point hand landmark detection, supporting intuitive two-hand control.
 
-## ✨ Fitur Utama
-
-* **Menggambar Real-Time**: Gambar garis di kanvas virtual hanya dengan menggerakkan jari.
-* **Kontrol Berbasis Gestur**:
-
-  * **Mode Menggambar**: Kuas aktif saat jari telunjuk dan jari tengah dirapatkan.
-  * **Mode Memilih**: Pilih warna atau penghapus dengan gestur pinch (ibu jari + telunjuk).
-* **Palet Warna Interaktif**: Ganti warna kuas (Merah, Hijau, Biru) atau aktifkan penghapus melalui UI di bagian atas layar.
-* **Visualisasi Tangan**: Kerangka landmark tangan ditampilkan secara langsung sebagai feedback visual.
+*(Tip: Replace this with your own demo GIF!)*
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## ✨ Key Features
 
-* Python 3.x
-* OpenCV (`opencv-python`)
-* MediaPipe (`mediapipe`)
-* NumPy
+### 🎨 Dual-Hand Control
+
+* **Left Hand**: Acts as the *Tool Palette* (mode selection).
+* **Right Hand**: Acts as the *Brush* (for drawing).
+
+### 🧠 Smart Mode System
+
+| Mode       | Description                                      |
+| ---------- | ------------------------------------------------ |
+| **DRAW**   | Freestyle drawing on the canvas.                 |
+| **SHAPE**  | Instantly draw rectangles.                       |
+| **PICKER** | Opens a 15-color palette for selection.          |
+| **CURSOR** | Idle mode for moving the cursor without drawing. |
+
+### 🖼️ Full Canvas Management
+
+* **Undo**: Revert up to 10 recent actions (canvas history).
+* **Clear**: Wipe the entire canvas (hold 1 second for confirmation).
+* **Save**: Save your artwork to the *HasilKarya/* folder (hold 1 second).
+
+### 🖌️ Dynamic Brush & Eraser
+
+* **Brush Size**: Adjust dynamically by changing the distance between your right-hand index and pinky fingers.
+* **Eraser**: Dedicated UI button for a large eraser mode.
+
+### 💡 Interactive UI (Header)
+
+* Displays current mode (IDLE, DRAW, SHAPE, etc.).
+* Shows active color preview.
+* Displays brush size (SIZE).
+* Temporary notifications (e.g., *“SAVED!”*).
 
 ---
 
-## ⚙️ Panduan Instalasi dan Penggunaan
+## 🛠️ Technologies Used
 
-### 1. Persiapan Awal
+* **Python 3.x**
+* **OpenCV (opencv-python)**
+* **MediaPipe (mediapipe)**
+* **NumPy**
 
-* Pastikan **Python 3.8+** sudah terinstal.
-* Clone repositori ini ke komputer Anda:
+---
+
+## ⚙️ Installation & Usage Guide
+
+### 1️⃣ Initial Setup
+
+Ensure Python 3.8+ is installed.
+
+Clone this repository:
 
 ```bash
 git clone https://github.com/ahnafyura/AirDrawing.git
+cd AirDrawing
 ```
 
-### 2. Buat Virtual Environment
+### 2️⃣ Create Virtual Environment
 
-Disarankan menggunakan virtual environment agar dependensi terisolasi.
+Using a virtual environment is recommended for dependency isolation.
 
 ```bash
-# Membuat venv
+# Create venv
 python -m venv venv
 
-# Aktifkan (Windows)
-.\venv\Scripts\Activate.ps1
+# Activate (Windows)
+.\venv\Scripts\activate
 
-# Aktifkan (macOS/Linux)
+# Activate (macOS/Linux)
 source venv/bin/activate
 ```
 
-### 3. Instal Dependensi
-
-Buat file `requirements.txt` dengan:
+### 3️⃣ Install Dependencies
 
 ```bash
-pip freeze > requirements.txt
+pip install opencv-python mediapipe numpy
 ```
 
-Instal semua library dengan:
+### 4️⃣ Run the Application
+
+Make sure your Python file is named `app.py` (or adjust the command):
 
 ```bash
-pip install -r requirements.txt
+python your_file_name.py
 ```
 
-### 4. Jalankan Aplikasi
-
-```bash
-python virtual_painter_revised.py
-```
-
-Aplikasi akan membuka jendela webcam. Kini Anda siap melukis dengan gerakan tangan!
+The app will open a webcam window — you’re ready to paint with your hands!
 
 ---
 
-## 🖐️ Cara Kerja Kontrol Gestur
+## 🖐️ Gesture Control Guide
 
-* **Menggambar**: Rapatkan jari telunjuk + jari tengah, lalu gerakkan tangan.
-* **Memilih Warna/Penghapus**: Lakukan pinch (ibu jari + telunjuk) dan arahkan ke kotak warna di atas layar.
-* **Mode Tunggu**: Posisi jari normal → tidak ada aksi.
-* **Keluar**: Tekan tombol **`s`** di keyboard.
+### 🫱 Left Hand (Controller / Tool Palette)
+
+| Gesture                         | Mode       | Action                         |
+| ------------------------------- | ---------- | ------------------------------ |
+| 3 Fingers (Index, Middle, Ring) | **PICKER** | Opens 15-color palette.        |
+| 4 Fingers (All except Thumb)    | **UNDO**   | Reverts last stroke.           |
+| 5 Fingers (Palm Open)           | **CLEAR**  | Hold 1 second to clear canvas. |
+| Thumb Up                        | **SAVE**   | Hold 1 second to save artwork. |
+
+### ✋ Right Hand (Action / Brush)
+
+| Gesture                         | Mode          | Action                                          |
+| ------------------------------- | ------------- | ----------------------------------------------- |
+| 1 Finger (Index)                | **DRAW**      | Draw/erase on canvas.                           |
+| “Spiderman” (Index + Pinky)     | **SHAPE**     | Draw rectangle between start/end points.        |
+| “Peace” Closed (Index + Middle) | **CURSOR**    | Move cursor without drawing.                    |
+| Pinch (Thumb + Index)           | **SELECTION** | Point to “ERASER” button to enable eraser mode. |
+
+### 🌍 Global Controls
+
+* **Brush Size**: Adjust using distance between right-hand Index & Pinky.
+* **Exit**: Press **S** on your keyboard.
 
 ---
 
-## 📜 Lisensi
+## 📜 License
 
-Proyek ini dilisensikan di bawah **MIT License**.
+This project is licensed under the **MIT License**.
