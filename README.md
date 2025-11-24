@@ -4,8 +4,6 @@ Welcome to **Virtual Gesture Studio**! This is an advanced computer vision appli
 
 This project leverages **OpenCV** for real-time image processing and **Google MediaPipe** for precise 21-point hand landmark detection, supporting intuitive two-hand control.
 
-*(Tip: Replace this with your own demo GIF!)*
-
 ---
 
 ## ✨ Key Features
