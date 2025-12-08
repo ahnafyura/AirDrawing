@@ -1,4 +1,4 @@
-# 🚀 Virtual Gesture Studio (Advanced Air Painter)
+# 🚀 Virtual Gesture Studio
 
 Welcome to **Virtual Gesture Studio**! This is an advanced computer vision application that transforms your webcam into an interactive digital canvas. Forget your mouse and keyboard draw, design, and manage your artwork using only hand gestures.
 
